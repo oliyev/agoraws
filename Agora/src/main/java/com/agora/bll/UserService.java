@@ -41,6 +41,16 @@ public class UserService {
 
 	// Add user - WORKS
 	public String addUser(User user) {
+		List<User> users = new ArrayList<>();
+		users = (List<User>) ((CrudRepository<User, Long>) userRepository).findAll();
+		
+		for (User agoraUser : users) {
+			if (agoraUser.getUsername().toUpperCase() == user.getUsername().toUpperCase()) {
+				return "exists";
+			}
+		}
+		
+		
 		User savedUser = ((CrudRepository<User, Long>) userRepository).save(user);
 		return "" + savedUser.getId();
 	}
