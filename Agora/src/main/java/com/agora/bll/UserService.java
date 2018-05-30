@@ -43,14 +43,18 @@ public class UserService {
 	public String addUser(User user) {
 		List<User> users = new ArrayList<>();
 		users = (List<User>) ((CrudRepository<User, Long>) userRepository).findAll();
+		System.out.println("List Size: " + users.size());
 		
 		for (User agoraUser : users) {
-			if (agoraUser.getUsername().toUpperCase() == user.getUsername().toUpperCase()) {
+			System.out.println("Users List: " + agoraUser.getUsername() + "}");
+			System.out.println("Given User: " + user.getUsername() + "}");
+			if (agoraUser.getUsername().toUpperCase().equals(user.getUsername().toUpperCase())) {
+				System.out.println("DUPLICATE");
 				return "exists";
 			}
 		}
 		
-		
+		user.setUsername(user.getUsername().toLowerCase());
 		User savedUser = ((CrudRepository<User, Long>) userRepository).save(user);
 		return "" + savedUser.getId();
 	}
