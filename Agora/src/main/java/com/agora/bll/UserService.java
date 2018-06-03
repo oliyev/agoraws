@@ -116,18 +116,7 @@ public class UserService {
 		// ((CrudRepository<Friendship, Long>) friendshipRepository).save(fs);
 		((CrudRepository<User, Long>) userRepository).save(requester);
 	}
-	
-	public void AddDebate(Long debaterId, Long opponentId) {
-		User debater = userRepository.findById(debaterId).orElse(null);
-		
-		Debate debate = new Debate();
-		debate.setdebater(debater);
-		debate.setOpponent(opponentId);
-		
-		debater.getDebateHistory().add(debate);
-		
-		userRepository.save(debater);
-	}
+
 	
 	public void removeFriendship(Long requesterId, Long friendId) {
 		System.out.println("REMOVING USER");

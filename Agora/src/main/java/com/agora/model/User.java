@@ -45,10 +45,10 @@ public class User implements Serializable{
             fetch = FetchType.LAZY)
     private Set<UserLocation> userLocations = new HashSet<>();
 	
-	@JsonManagedReference
+	/*@JsonManagedReference
 	@OneToMany(mappedBy = "debater", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private Set<Debate> debateHistory = new HashSet<>();
+    private Set<Debate> debateHistory = new HashSet<>();*/
 	
 	
 	public User(long id, String username, String password, String firstname, String lastname,
@@ -137,12 +137,12 @@ public class User implements Serializable{
 		this.photo = photo;
 	}
 
-	public Set<Debate> getDebateHistory() {
+	/*public Set<Debate> getDebateHistory() {
 		return debateHistory;
 	}
 
 	public void setDebateHistory(Set<Debate> debateHistory) {
 		this.debateHistory = debateHistory;
-	}
+	}*/
 	
 }
