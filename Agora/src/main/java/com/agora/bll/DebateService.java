@@ -68,6 +68,15 @@ public class DebateService {
 		debate.setDescription(topic);
 		((CrudRepository<Debate, Long>) debateRepository).save(debate);
 	}
+	
+	public List<Debate> deleteDebate(Long debateId) {
+		((CrudRepository<Debate, Long>) debateRepository).deleteById(debateId);
+		
+		List<Debate> debates = new ArrayList<>();
+		debates = (List<Debate>) ((CrudRepository<Debate, Long>) debateRepository).findAll();
+		
+		return debates;
+	}
 
 
 }

@@ -58,6 +58,12 @@ public class DebateController {
 		debateService.editTopic(topic, debateId);
 	}
 	
+	@CrossOrigin(origins = {"http://localhost:3000", "https://agora-admin.herokuapp.com"})
+	@RequestMapping("/deleteDebate/{debateId}")
+	public List<Debate> deleteDebate(@PathVariable Long debateId){
+		return debateService.deleteDebate(debateId);
+	}
+	
 	
 	
 }
